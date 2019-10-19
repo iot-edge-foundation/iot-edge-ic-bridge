@@ -1,0 +1,43 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "IoTEdgeIcBridgeModule Remote Debug (.NET Core)",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickRemoteProcess}",
+      "pipeTransport": {
+        "pipeProgram": "docker",
+        "pipeArgs": [
+          "exec",
+          "-i",
+          "IoTEdgeIcBridgeModule",
+          "sh",
+          "-c"
+        ],
+        "debuggerPath": "~/vsdbg/vsdbg",
+        "pipeCwd": "${workspaceFolder}",
+        "quoteArgs": true
+      },
+      "sourceFileMap": {
+        "/app": "${workspaceFolder}/modules/IoTEdgeIcBridgeModule"
+      },
+      "justMyCode": true
+    },
+    {
+      "name": "IoTEdgeIcBridgeModule Local Debug (.NET Core)",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceRoot}/modules/IoTEdgeIcBridgeModule/bin/Debug/netcoreapp2.1/IoTEdgeIcBridgeModule.dll",
+      "args": [],
+      "cwd": "${workspaceRoot}/modules/IoTEdgeIcBridgeModule",
+      "internalConsoleOptions": "openOnSessionStart",
+      "stopAtEntry": false,
+      "console": "internalConsole",
+      "env": {
+        "EdgeHubConnectionString": "${config:azure-iot-edge.EdgeHubConnectionString}",
+        "EdgeModuleCACertificateFile": "${config:azure-iot-edge.EdgeModuleCACertificateFile}"
+      }
+    }
+  ]
+}
