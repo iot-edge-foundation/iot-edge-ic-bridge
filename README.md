@@ -81,4 +81,5 @@ Here is an example of how to use the Exception output for routes:
 }
 ```
 
+![routeToIoTHub](/media/EdgeRouteFlow.png)
 
