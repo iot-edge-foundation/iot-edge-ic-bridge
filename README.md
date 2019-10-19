@@ -96,6 +96,21 @@ Provide these values in the desired properties:
 }
 ```
 
+## Direct Method
+
+The module also supports a direct method name 'inputMessage'.
+
+Just pass it message like this:
+
+```
+{
+  "[key x]": [value x],
+  "[key y]": [value y]
+}
+```
+
+You can follow the message using the logging output.
+
 ## Acknowledgement
 
 The routing image is produced with the [IoT Edge Module Flow generator](https://iotedgemoduleflow.azurewebsites.net/).
