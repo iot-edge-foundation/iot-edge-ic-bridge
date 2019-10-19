@@ -83,3 +83,29 @@ Here is an example of how to use the Exception output for routes:
 
 ![routeToIoTHub](/media/EdgeRouteFlow.png)
 
+## Desired properties
+
+The module support one DeviceId and one IoT Central Bridge Uri.
+
+Provide these values in the desired properties:
+
+```
+"desired": {
+  "deviceId": "[Device Id]",
+  "uri": "[IoT Central Bridge function URI]"
+}
+```
+
+## Acknowledgement
+
+The routing image is produced with the [IoT Edge Module Flow generator](https://iotedgemoduleflow.azurewebsites.net/).
+
+## Contribute
+
+The code of this logic is [open source](https://github.com/sandervandevelde/iot-edge-ic-bridge) and licenced under the MIT license.
+
+Want to contribute? Throw me a pull request....
+
+Want to know more about me? Check out [my blog](https://blog.vandevelde-online.com).
+
+
