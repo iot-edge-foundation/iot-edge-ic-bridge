@@ -109,7 +109,7 @@ namespace IoTEdgeIcBridgeModule
             var messageBytes = message.GetBytes();
             string messageString = Encoding.UTF8.GetString(messageBytes);
 
-            Console.WriteLine($"Received message:[{messageString}]");
+            Console.WriteLine($"Received message:'{messageString}'");
 
             await SendToIoTCentralBridge(messageString, moduleClient);
 
