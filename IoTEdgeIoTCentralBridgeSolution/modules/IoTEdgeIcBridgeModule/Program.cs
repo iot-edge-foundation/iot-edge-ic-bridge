@@ -13,6 +13,7 @@ namespace IoTEdgeIcBridgeModule
     using Newtonsoft.Json;
     using System.Net.Http;
     using Microsoft.Azure.Devices.Shared;
+    using System.Text.RegularExpressions;
 
     class Program
     {
@@ -203,6 +204,27 @@ namespace IoTEdgeIcBridgeModule
             {
                 await moduleClient.SendEventAsync("Exception", pipeMessage);
                 Console.WriteLine($"Received message '{status}','{result}' sent");
+
+                var regex = new Regex(@"not yet exceeded. Please try again in (\w+) seconds", RegexOptions.IgnoreCase);
+                var match = regex.Match(result);
+                if (match.Success
+                        && match.Groups.Count > 0)
+                {
+                    int seconds;
+                    var isInt = Int32.TryParse(match.Groups[1].Value, out seconds);
+                    if (isInt)
+                    {
+                        Console.Write($"Waiting for {seconds} seconds");
+
+                        for(var i = 0; i< seconds; i++)
+                        {
+                            Console.Write(".");
+                            Thread.Sleep(1000);
+                        }
+
+                        Console.WriteLine();
+                    }
+                }                
             }   
         }
 
