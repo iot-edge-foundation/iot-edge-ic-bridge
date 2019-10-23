@@ -20,7 +20,7 @@ This module is available in [Docker Hub](https://cloud.docker.com/repository/doc
 Use it in your IoT device with tag:
 
 ```
-svelde/iot-edge-ic-bridge:1.0.0-amd64
+svelde/iot-edge-ic-bridge:1.1.0-amd64
 ```
 
 ## Input
