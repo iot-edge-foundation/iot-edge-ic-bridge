@@ -205,6 +205,12 @@ namespace IoTEdgeIcBridgeModule
                 await moduleClient.SendEventAsync("Exception", pipeMessage);
                 Console.WriteLine($"Received message '{status}','{result}' sent");
 
+                CompensateThrottle(result);
+            }   
+        }
+
+        private static void CompensateThrottle(string result)
+        {
                 var regex = new Regex(@"not yet exceeded. Please try again in (\w+) seconds", RegexOptions.IgnoreCase);
                 var match = regex.Match(result);
                 if (match.Success
@@ -216,7 +222,8 @@ namespace IoTEdgeIcBridgeModule
                     {
                         Console.Write($"Waiting for {seconds} seconds");
 
-                        for(var i = 0; i< seconds; i++)
+                        // wait two extra seconds
+                        for(var i = 0; i< seconds+2; i++)
                         {
                             Console.Write(".");
                             Thread.Sleep(1000);
@@ -225,7 +232,6 @@ namespace IoTEdgeIcBridgeModule
                         Console.WriteLine();
                     }
                 }                
-            }   
         }
 
         private static Task onDesiredPropertiesUpdate(TwinCollection desiredProperties, object userContext)
