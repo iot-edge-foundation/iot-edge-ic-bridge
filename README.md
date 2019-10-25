@@ -111,6 +111,12 @@ Just pass it message like this:
 
 You can follow the message using the logging output.
 
+## Throttling
+
+I recently added support for throttling. If the bridge is overwhelmed by questions, it requests for a time out.
+
+This module it honors these request by stopping sensing questions for the amount of time requests (eg. 50 seconds).
+
 ## Acknowledgement
 
 The routing image is produced with the [IoT Edge Module Flow generator](https://iotedgemoduleflow.azurewebsites.net/).
