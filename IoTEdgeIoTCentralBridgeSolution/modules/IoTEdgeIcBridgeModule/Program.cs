@@ -47,6 +47,20 @@ namespace IoTEdgeIcBridgeModule
         /// </summary>
         static async Task Init()
         {
+            Console.WriteLine("      _                         ___      _____   ___     _");
+            Console.WriteLine("     /_\\   ___ _  _  _ _  ___  |_ _| ___|_   _| | __| __| | __ _  ___  ");
+            Console.WriteLine("    / _ \\ |_ /| || || '_|/ -_)  | | / _ \\ | |   | _| / _` |/ _` |/ -_)");
+            Console.WriteLine("   /_/ \\_\\/__| \\_,_||_|  \\___| |___|\\___/ |_|   |___|\\__,_|\\__, |\\___|");
+            Console.WriteLine("                                                           |___/");
+            Console.WriteLine(" ___    _____    ___         _            _   ___     _    _           ");
+            Console.WriteLine("|_ _|__|_   _|  / __|___ _ _| |_ _ _ __ _| | | _ )_ _(_)__| |__ _ ___  ");
+            Console.WriteLine(" | |/ _ \\| |   | (__/ -_) ' \\  _| '_/ _` | | | _ \\ '_| / _` / _` / -_) ");
+            Console.WriteLine("|___\\___/|_|    \\___\\___|_||_\\__|_| \\__,_|_| |___/_| |_\\__,_\\__, \\___| ");
+            Console.WriteLine("                                                            |___/      ");
+            Console.WriteLine(" ");
+            Console.WriteLine("   Copyright © 2019 - IoT Edge Foundation");
+            Console.WriteLine(" ");
+			
             MqttTransportSettings mqttSetting = new MqttTransportSettings(TransportType.Mqtt_Tcp_Only);
             ITransportSettings[] settings = { mqttSetting };
 
@@ -61,21 +75,6 @@ namespace IoTEdgeIcBridgeModule
             await onDesiredPropertiesUpdate(twin.Properties.Desired, ioTHubModuleClient);
 
             await ioTHubModuleClient.OpenAsync();
-
-            Console.WriteLine(@"");
-            Console.WriteLine(@"     /$$$$$$      /$$$$$$  /$$    /$$ /$$$$$$$$ /$$       /$$$$$$$  /$$$$$$$$ ");
-            Console.WriteLine(@"   /$$$__  $$$   /$$__  $$| $$   | $$| $$_____/| $$      | $$__  $$| $$_____/ ");
-            Console.WriteLine(@"  /$$_/  \_  $$ | $$  \__/| $$   | $$| $$      | $$      | $$  \ $$| $$       ");
-            Console.WriteLine(@" /$$/ /$$$$$  $$|  $$$$$$ |  $$ / $$/| $$$$$   | $$      | $$  | $$| $$$$$    ");
-            Console.WriteLine(@"| $$ /$$  $$| $$ \____  $$ \  $$ $$/ | $$__/   | $$      | $$  | $$| $$__/    ");
-            Console.WriteLine(@"| $$| $$\ $$| $$ /$$  \ $$  \  $$$/  | $$      | $$      | $$  | $$| $$       ");
-            Console.WriteLine(@"| $$|  $$$$$$$$/|  $$$$$$/   \  $/   | $$$$$$$$| $$$$$$$$| $$$$$$$/| $$$$$$$$ ");
-            Console.WriteLine(@"|  $$\________/  \______/     \_/    |________/|________/|_______/ |________/ ");
-            Console.WriteLine(@" \  $$$   /$$$                                                                ");
-            Console.WriteLine(@"  \_  $$$$$$_/                                                                ");
-            Console.WriteLine(@"    \______/                                                                  ");
-            Console.WriteLine("IoT Central Bridge module client initialized.");
-            Console.WriteLine("MIT licensed by Sander van de Velde");
 
             // Register callback to be called when a message is received by the module
             await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", PipeMessage, ioTHubModuleClient);
