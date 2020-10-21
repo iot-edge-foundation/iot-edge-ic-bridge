@@ -201,6 +201,9 @@ namespace IoTEdgeIcBridgeModule
 
             using (var pipeMessage = new Message(messageBytes))
             {
+		pipeMessage.ContentType = "application/json";
+                pipeMessage.ContentEncoding = "utf-8";
+                    
                 await moduleClient.SendEventAsync("Exception", pipeMessage);
                 Console.WriteLine($"Received message '{status}','{result}' sent");
 
